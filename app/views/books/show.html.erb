@@ -4,8 +4,8 @@
     <tbody>
         <tr>
             <td>
-                <%= link_to user_path(current_user.id) do %>
-                    <%= image_tag 'sample-author1.jpg' %>
+                <%= link_to user_path(@book.user_id) do %>
+                    <%= image_tag @book.user.get_profile_image(100,100) %>
                     <br>
                     ユーザーネーム
                 <% end %>
