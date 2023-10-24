@@ -1,2 +1,23 @@
-<h1>Books#show</h1>
-<p>Find me in app/views/books/show.html.erb</p>
+<h1>Book detail</h1>
+
+<table>
+    <tbody>
+        <tr>
+            <td>
+                <%= link_to books_path do %>
+                    <%= image_tag 'sample-author1.jpg' %>
+                    <br>
+                    ユーザーネーム
+                <% end %>
+            </td>
+            <td> <%= @book.title %></td>
+            <td> <%= @book.body %></td>
+            <td>
+                <button>Edit</button>
+            </td>
+            <td>
+                <button>Destroy</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
