@@ -16,7 +16,9 @@
                 <button>Edit</button>
             </td>
             <td>
-                <button>Destroy</button>
+                <% if @book.user == current_user %>
+                    <%= link_to "Destroy", book_path(@book), method: :delete, data: {confirm: "本当に削除しますか？"} %>
+                <% end %>
             </td>
         </tr>
     </tbody>
