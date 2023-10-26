@@ -1,5 +1,10 @@
 <h1>Books</h1>
 
+<div class="side-bar">
+    <%= render 'profile', user: @user %>
+    <%= render 'books/mkbook', Book: @book %>
+</div>
+
 <div class="user-container">
     <table>
         <thead>

@@ -1,5 +1,10 @@
 <h1>Book detail</h1>
 
+<div class="side-bar">
+        <%= render 'users/profile', user: @book.user %>
+        <%= render 'mkbook', Book: @book %>
+</div>
+
 <table>
     <tbody>
         <tr>
@@ -7,13 +12,15 @@
                 <%= link_to user_path(@book.user_id) do %>
                     <%= image_tag @book.user.get_profile_image(100,100) %>
                     <br>
-                    ユーザーネーム
+                    <%= link_to @book.user.name, user_path(@book.user_id) %>
                 <% end %>
             </td>
             <td> <%= @book.title %></td>
             <td> <%= @book.body %></td>
             <td>
-                <button>Edit</button>
+                <% if @book.user == current_user %>
+                    <%= link_to "Edit", edit_book_path(@book.id) %>
+                <% end %>
             </td>
             <td>
                 <% if @book.user == current_user %>

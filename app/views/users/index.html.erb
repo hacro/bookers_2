@@ -1,0 +1,26 @@
+<h1>Users</h1>
+
+<div class="container">
+    <div class="side-bar">
+        <%= render 'profile', user: current_user %>
+        <%= render 'books/mkbook', Book: @book %>
+    </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>image</th>
+                    <th>name</th>
+                    <th></th>
+                </tr>
+            </thead>
+        <% @users.each do |user| %>
+            <tbody>
+                <tr>
+                    <td> <%= image_tag user.get_profile_image(100,100) %></td>
+                    <td> <%= user.name %></td>
+                    <td> <%= link_to "Show",  user_path(user.id)%></td>
+                </tr>
+            </tbody>
+        <% end %>
+    </table>
+</div>
