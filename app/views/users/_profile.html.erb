@@ -1,16 +1,16 @@
 <div class="user-prof">
     <div class="prof-img">
-
-        <table class="user-name">
-            <h2>User info</h2>
-            <tr>
-                <td>name</td>
-                <td> <%= user.name %></td>
-            </tr>
-            <tr>
-                <td>introduction</td>
-                <td> <%= user.introduction %></td>
-            </tr>
-        </table>
+        <%= image_tag user.get_profile_image(150,150) %>
     </div>
+    <table class="user-name">
+        <h2>User info</h2>
+        <tr>
+            <td>name</td>
+            <td> <%= user.name %></td>
+        </tr>
+        <tr>
+            <td>introduction</td>
+            <td> <%= user.introduction %></td>
+        </tr>
+    </table>
 </div>

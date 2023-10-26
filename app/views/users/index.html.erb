@@ -3,6 +3,7 @@
 <div class="container">
     <div class="side-bar">
         <%= render 'profile', user: current_user %>
+        <%= link_to 'Edit profile', edit_user_path(current_user) %>
         <%= render 'books/mkbook', Book: @book %>
     </div>
         <table>

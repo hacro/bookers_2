@@ -1,9 +1,12 @@
+<%= flash[:mkBookError] %>
+
 <h1>Books</h1>
 
 <div class="container">
 
     <div class="side-bar">
         <%= render 'users/profile', user: current_user %>
+        <%= link_to 'Edit profile', edit_user_path(current_user) %>
         <%= render 'mkbook', Book: @book %>
     </div>
     <table>

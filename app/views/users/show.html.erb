@@ -1,7 +1,12 @@
+<%= flash[:editUserSuccess] %>
+
 <h1>Books</h1>
 
 <div class="side-bar">
     <%= render 'profile', user: @user %>
+    <% if @user == current_user %>
+        <%= link_to "Edit Profile",  edit_user_path(@user)%>
+    <% end %>
     <%= render 'books/mkbook', Book: @book %>
 </div>
 
