@@ -1,38 +1,45 @@
-<%= flash[:mkBookSuccess] %>
-<%= flash[:editBookSuccess] %>
-<%= flash[:editBookError] %>
-<h1>Book detail</h1>
 
-<div class="side-bar">
-        <%= render 'users/profile', user: @book.user %>
-        <% if @book.user == current_user %>
-            <%= link_to "Edit profile", edit_user_path(@book.user) %>
-        <% end %>
-        <%= render 'mkbook', Book: @book %>
+<div class="container">
+    <%= flash[:mkBookSuccess] %>
+    <%= flash[:editBookSuccess] %>
+    <%= flash[:editBookError] %>
+
+    <div class="inside-container">
+        <div class="side-bar col-md-3">
+                <%= render 'users/profile', user: @book.user %>
+                <% if @book.user == current_user %>
+                    <%= link_to "Edit profile", edit_user_path(@book.user) %>
+                <% end %>
+                <%= render 'mkbook', Book: @book %>
+        </div>
+
+        <div class="user-container col-md-8">
+            <h1>Book detail</h1>
+            <table class="table table-striped">
+                <tbody>
+                    <tr>
+                        <td>
+                            <%= link_to user_path(@book.user_id) do %>
+                                <%= image_tag @book.user.get_profile_image(100,100) %>
+                                <br>
+                                <%= link_to @book.user.name, user_path(@book.user_id) %>
+                            <% end %>
+                        </td>
+                        <td> <%= @book.title %></td>
+                        <td> <%= @book.body %></td>
+                        <td>
+                            <% if @book.user == current_user %>
+                                <%= link_to "Edit", edit_book_path(@book.id) %>
+                            <% end %>
+                        </td>
+                        <td>
+                            <% if @book.user == current_user %>
+                                <%= link_to "Destroy", book_path(@book), method: :delete, data: {confirm: "本当に削除しますか？"} %>
+                            <% end %>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
-
-<table>
-    <tbody>
-        <tr>
-            <td>
-                <%= link_to user_path(@book.user_id) do %>
-                    <%= image_tag @book.user.get_profile_image(100,100) %>
-                    <br>
-                    <%= link_to @book.user.name, user_path(@book.user_id) %>
-                <% end %>
-            </td>
-            <td> <%= @book.title %></td>
-            <td> <%= @book.body %></td>
-            <td>
-                <% if @book.user == current_user %>
-                    <%= link_to "Edit", edit_book_path(@book.id) %>
-                <% end %>
-            </td>
-            <td>
-                <% if @book.user == current_user %>
-                    <%= link_to "Destroy", book_path(@book), method: :delete, data: {confirm: "本当に削除しますか？"} %>
-                <% end %>
-            </td>
-        </tr>
-    </tbody>
-</table>

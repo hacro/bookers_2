@@ -1,36 +1,39 @@
-<%= flash[:editUserSuccess] %>
+<div class="container">
+    <%= flash[:editUserSuccess] %>
 
-<h1>Books</h1>
+    <div class="inside-container">
+        <div class="side-bar col-md-3">
+            <%= render 'profile', user: @user %>
+            <% if @user == current_user %>
+                <%= link_to "Edit Profile",  edit_user_path(@user)%>
+            <% end %>
+            <%= render 'books/mkbook', Book: @book %>
+        </div>
 
-<div class="side-bar">
-    <%= render 'profile', user: @user %>
-    <% if @user == current_user %>
-        <%= link_to "Edit Profile",  edit_user_path(@user)%>
-    <% end %>
-    <%= render 'books/mkbook', Book: @book %>
-</div>
-
-<div class="user-container">
-    <table>
-        <thead>
-        <tr>
-            <th></th>
-            <th>Title</th>
-            <th>Opinion</th>
-        </tr>
-        </thead>
-        <% @books.each do |book| %>
-            <tbody>
+        <div class="user-container col-md-8">
+            <h1>Books</h1>
+            <table class="table table-striped">
+                <thead>
                 <tr>
-                    <td> <%= image_tag @user.get_profile_image(100,100) %></td>
-                    <td>
-                        <%= link_to book.title, book_path(book.id)%>
-                    </td>
-                    <td>
-                        <%= book.body %>
-                    </td>
+                    <th></th>
+                    <th>Title</th>
+                    <th>Opinion</th>
                 </tr>
-            </tbody>
-        <% end %>
-    </table>
+                </thead>
+                <% @books.each do |book| %>
+                    <tbody>
+                        <tr>
+                            <td class="td-image"> <%= image_tag @user.get_profile_image(100,100) %></td>
+                            <td>
+                                <%= link_to book.title, book_path(book.id)%>
+                            </td>
+                            <td>
+                                <%= book.body %>
+                            </td>
+                        </tr>
+                    </tbody>
+                <% end %>
+            </table>
+        </div>
+    </div>
 </div>

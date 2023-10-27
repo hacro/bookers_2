@@ -1,0 +1,42 @@
+@use '~bootstrap/scss/bootstrap';
+
+.header-container{
+    display: flex;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    justify-content: space-between;
+    color: white;
+    font-size: 24px;
+    header{
+        display: block;
+        width: 1800px;
+    }
+    .navbar{
+        display: flex;
+        justify-content: space-between;
+        .icon a{
+            display: inline-block;
+            color: white;
+        }
+        .nav-menu li{
+            display: inline-block;
+            margin-right: 15px;
+        }
+        .nav-menu li a{
+            color: white;
+        }
+    }
+}
+
+    .container{
+        display: block;
+        width: 100%;
+        margin: 0 auto;
+        padding-top: 20px;
+        .inside-container{
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+        }
+    }
