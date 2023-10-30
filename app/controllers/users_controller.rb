@@ -2,13 +2,26 @@ class UsersController < ApplicationController
 
   before_action :authenticate_user!
 
+  # def create
+  #   @user = User.new(user_params)
+  #   if @user.save
+  #     redirect_to root_path, notice: "successfully"
+  #   else
+  #     render :new
+  #   end8
+  # end
+
   def show
     @user = User.find(params[:id])
     @books = @user.books
+    @book = Book.new
   end
 
   def edit
     @user = User.find(params[:id])
+    unless @user == current_user
+      redirect_to user_path(current_user)
+    end
   end
 
   def update
@@ -17,14 +30,14 @@ class UsersController < ApplicationController
       redirect_to user_path(current_user.id)
       flash[:editUserSuccess] = "successfully Update Profile"
     else
-      @user = User.all
-      render :index
-      lash[:editUserError] = "error Update Profile"
+      render :edit
+
     end
   end
 
   def index
     @users = User.all
+    @book = Book.new
   end
 
   private

@@ -6,13 +6,13 @@
             <%= render 'users/profile', user: current_user %>
                 <%= link_to edit_user_path(current_user) do %>
                     <button type="button" class="btn btn-secondary">
-                        <i class="fa-solid fa-wrench"></i>
+                        <i class="fa-solid fa-user-gear"></i>
                     </button>
                 <% end %>
-            <%= render 'mkbook', Book: @book %>
+            <%= render 'mkbook', book: @book %>
         </div>
 
-        <div class="user-container col-md-8">
+        <div class="user-container col-md-8 offset-md-1">
             <h1>Books</h1>
             <table class="table table-striped">
                 <thead>

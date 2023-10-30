@@ -10,14 +10,20 @@
                 <% if @book.user == current_user %>
                     <%= link_to edit_user_path(@book.user) do %>
                         <button type="button" class="btn btn-secondary">
-                            <i class="fa-solid fa-wrench"></i>
+                            <i class="fa-solid fa-user-gear"></i>
+                        </button>
+                    <% end %>
+                <% else %>
+                    <%= link_to edit_user_path(@book.user) do %>
+                        <button type="button" class="btn btn-secondary">
+                            <i class="fa-solid fa-user-gear"></i>
                         </button>
                     <% end %>
                 <% end %>
-                <%= render 'mkbook', Book: @book %>
+                <%= render 'mkbook', book: @mkbook %>
         </div>
 
-        <div class="user-container col-md-8">
+        <div class="user-container col-md-8 offset-md-1">
             <h1>Book detail</h1>
             <table class="table table-striped">
                 <tbody>
