@@ -1,11 +1,21 @@
 <div class="container">
     <%= flash[:editUserSuccess] %>
 
-    <div class="inside-container">
+    <div class="row">
         <div class="side-bar col-md-3">
             <%= render 'profile', user: @user %>
             <% if @user == current_user %>
-                <%= link_to "Edit Profile",  edit_user_path(@user)%>
+                    <%= link_to edit_user_path(@user) do %>
+                        <button type="button" class="btn btn-secondary">
+                            <i class="fa-solid fa-wrench"></i>
+                        </button>
+                    <% end %>
+            <% else %>
+                <%= link_to user_path(@user) do %>
+                    <button type="button" class="btn btn-secondary">
+                        <i class="fa-solid fa-wrench"></i>
+                    </button>
+                <% end %>
             <% end %>
             <%= render 'books/mkbook', Book: @book %>
         </div>

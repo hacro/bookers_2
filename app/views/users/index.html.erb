@@ -1,9 +1,13 @@
 
 <div class="container">
-    <div class="inside-container">
+    <div class="row">
         <div class="side-bar col-md-3">
             <%= render 'profile', user: current_user %>
-            <%= link_to 'Edit profile', edit_user_path(current_user) %>
+                <%= link_to edit_user_path(current_user) do %>
+                    <button type="button" class="btn btn-secondary">
+                        <i class="fa-solid fa-wrench"></i>
+                    </button>
+                <% end %>
             <%= render 'books/mkbook', Book: @book %>
         </div>
 

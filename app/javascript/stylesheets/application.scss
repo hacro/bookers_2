@@ -34,9 +34,17 @@
         width: 100%;
         margin: 0 auto;
         padding-top: 20px;
-        .inside-container{
+        .row{
             display: flex;
             justify-content: space-between;
             margin-top: 50px;
+            .side-bar{
+                button {
+                    width: 200px;
+                    & a{
+                        color: white;
+                    }
+                }
+            }
         }
     }
